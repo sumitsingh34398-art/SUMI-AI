@@ -1,4 +1,4 @@
-const API_KEY = "AQ.Ab8RN6LYOYbspXtn_s2IbbnlzhxJ8QtqdO2Z5VdBJrUGMpfItA";
+const API_KEY = "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";
 let conversationHistory = [];
 
 let savedChats = JSON.parse(localStorage.getItem("sumiChats")) || [];
@@ -6,17 +6,9 @@ let savedChats = JSON.parse(localStorage.getItem("sumiChats")) || [];
 async function sendMessage() {
     let input = document.getElementById("user-input");
     let chatBox = document.getElementById("chat-box");
+    document.querySelector("button").disabled = true;
 
     let text = input.value.trim();
-    conversationHistory.push({
-        role: "user",
-        parts: [{ text: text }]
-      });
-    if (text === "") return;
-    conversationHistory.push({
-        role: "user",
-        parts: [{ text: text }]
-    });
 
     // User message
     let userMsg = document.createElement("div");
@@ -40,43 +32,45 @@ async function sendMessage() {
 
     try {
         let response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+            'https://openrouter.ai/api/v1/chat/completions',
             {
                 method: "POST",
                 headers: {
+                    "Authorization": `Bearer ${API_KEY}`,
                     "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    contents: [
-                      {
-                        role: "user",
-                        parts: [{
-                            text: "You are Sumi AI. Your creator is Sumit. You were created as an advanced AI assistant project. Never say you are Gemini or Google AI. Always introduce yourself as Sumi AI. You always reply in Hindi only. If someone asks who made you, say: My creator is Sumit. If someone asks what you can do, say: I can answer questions, help in coding, guide students, and chat intelligently. Be friendly and simple."
-                        }]
-                      },
-                      ...conversationHistory
+                 },
+                 body: JSON.stringify({
+                    model: "openai/gpt-oss-20b:free",
+                    messages: [
+                       {
+                          role: "system",
+                          content: "You are Sumi AI. Reply in Hindi."
+                       },
+                       {
+                          role: "user",
+                          content: text
+                       }
                     ]
-                  })
+                 })
             }
         );
 
         let data = await response.json();
         console.log("STATUS:", response.status);
         console.log("DATA:", data);
-console.log(data);
-if (!data.candidates) {
+        if (data.error) {
+            botMsg.innerText = data.error.message;
+            console.log(data.error.message);
+            return;
+        }
+        if (!data.choices) {
     botMsg.innerText = "Sumi AI is resting, try again in few seconds.";
     console.log(data);
     return;
 }
 
-        let reply = data.candidates[0].content.parts[0].text;
-        conversationHistory.push({
-            role: "model",
-            parts: [{ text: reply }]
-          });
+        let reply = data.choices[0].message.content;
         botMsg.innerText = reply;
-        speakText(reply);
         savedChats.push({
             sender: "bot",
             text: reply
@@ -88,6 +82,7 @@ if (!data.candidates) {
         botMsg.innerText = "Error connecting AI ❌";
         console.log(error);
     }
+    document.querySelector("button").disabled = false;
 
     chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -172,4 +167,9 @@ function saveChatHistory() {
 
     historyList.appendChild(newChat);
     localStorage.setItem("chatHistory",historyList.innerHTML);
+}
+function speakText(text) {
+   let speech = new SpeechSynthesisUtterance(text);
+   speech.lang = "hi-IN";
+   window.speechSynthesis.speak(speech);
 }
