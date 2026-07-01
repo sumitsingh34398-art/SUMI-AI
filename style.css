@@ -143,9 +143,9 @@ font-size: 18px;
 }
 .sidebar{
     position:absolute;
-    left:-210px;
+    left:-220px;
     top:0;
-    width:160px;
+    width:220px;
     height:100%;
     background:#0b1220;
     padding:15px;
@@ -178,4 +178,128 @@ font-size: 18px;
 
 .history-item:hover{
     background: #1e293b;
+}
+body.login-body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#0f172a,#020617);
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-box{
+    width:350px;
+    padding:30px;
+    background: rgba(255,255,255,0.08);
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,255,255,0.2);
+  }
+  
+  .login-box h1{
+    color:white;
+  }
+  
+  .login-box p{
+    color:#94a3b8;
+  }
+  
+  .login-box input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+  }
+  
+  .login-box button{
+    width:95%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    transition:0.3s;
+  }
+  
+  .login-box button:hover{
+    transform:scale(1.03);
+  }
+  
+  .sidebar h2{
+    color:white;
+    margin-bottom:20px;
+  }
+  
+  .menu-item{
+    color:#ddd;
+    padding:12px;
+    margin:8px 0;
+    background:#1f2937;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+    display: block;
+    width:100%;
+    box-sizing: border-box;
+  }
+  
+  .menu-item:hover{
+    background:#2563eb;
+  }
+  
+  .sidebar button{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color: white;
+    cursor: pointer;
+    display: block;
+  }
+  /* Overlay */
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    display:none;
+    z-index:9998;
+}
+
+/* Sidebar hidden by default */
+.sidebar{
+    position: fixed;
+    top:0;
+    left:-260px;
+    width:240px;
+    height:100%;
+    background:#0b1220;
+    padding:20px;
+    transition:0.3s ease;
+    z-index:9999;
+    border-right:1px solid #1e293b;
+}
+
+/* Sidebar open */
+.sidebar.active{
+    left:0;
+}
+
+/* Overlay active */
+.overlay.active{
+    display:block;
 }
