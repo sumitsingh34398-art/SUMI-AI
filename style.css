@@ -290,3 +290,22 @@ body.login-body{
 .overlay.active{
     display:block;
 }
+#attach-btn{
+    font-size:24px;
+    cursor:pointer;
+    color:white;
+    margin-right:10px;
+ }
+ .input-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+ }
+ .user-message{
+    background:#06b6d4;
+    padding:10px 15px;
+    border-radius:15px;
+    margin:8px 0;
+    width:fit-content;
+    margin-left:auto;
+ }
