@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="overlay" id="overlay"
+    onclick="closeSidebar()"></div>
 
 <div class="app">
     <div class="sidebar" id="sidebar">
-        <h3>Chat History</h3>
+        <h2>SUMI AI</h2>
+    
+        <button onclick="newChat()">💬 New Chat</button>
+    
+        <div class="menu-item">🕘 Chat History</div>
+        <div class="menu-item">⚙️ Settings</div>
+        <div class="menu-item">🌙 Dark Mode</div>
+        <div class="menu-item">👤 Profile</div>
+        <div class="menu-item">📄 Export Chat</div>
+        <div class="menu-item">🔒 Privacy</div>
+    
+        <button onclick="logout()">🚪 Logout</button>
+    
         <div id="history-list"></div>
     </div>
 
@@ -19,6 +33,7 @@
         <h2>SUMI AI</h2>
         <span>⚙️</span>
     </div>
+    <button onclick="logout()">Logout</button>
 
     <button class="new-chat" onclick="newChat()">+ New Chat</button>
 
@@ -35,5 +50,6 @@
 </div>
 
 <script src="script.js"></script>
+<script type="module" src="firebase.js"></script>
 </body>
 </html>
