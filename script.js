@@ -173,3 +173,12 @@ function speakText(text) {
    speech.lang = "hi-IN";
    window.speechSynthesis.speak(speech);
 }
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+
+function closeSidebar() {
+    document.getElementById("sidebar").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
