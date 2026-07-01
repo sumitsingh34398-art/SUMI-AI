@@ -102,6 +102,7 @@ function newChat() {
 
     chatBox.appendChild(botMsg);
     saveChatHistory();
+    closeSidebar();
 }
 document.getElementById("user-input").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
@@ -147,10 +148,6 @@ function startVoice() {
         alert("Mic not working");
     };
 }
-function toggleSidebar() {
-    let sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("active");
-}
 function saveChatHistory() {
     let historyList = document.getElementById("history-list");
 
@@ -181,4 +178,9 @@ function toggleSidebar() {
 function closeSidebar() {
     document.getElementById("sidebar").classList.remove("active");
     document.getElementById("overlay").classList.remove("active");
+}
+function logout() {
+    alert("Logged Out");
+    // ager login page hai to wapas bhej do
+    window.loction.href = "login.html";
 }
