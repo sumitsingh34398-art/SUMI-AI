@@ -182,5 +182,21 @@ function closeSidebar() {
 function logout() {
     alert("Logged Out");
     // ager login page hai to wapas bhej do
-    window.loction.href = "login.html";
+    window.location.href = "login.html";
 }
+document.getElementById("file-upload").addEventListener("change", function(){
+
+    let file = this.files[0];
+
+    if(file){
+
+        let chatBox = document.getElementById("chat-box");
+
+        let fileMsg = document.createElement("div");
+        fileMsg.className = "user-message";
+
+        fileMsg.innerText = "📎 " + file.name;
+
+        chatBox.appendChild(fileMsg);
+    }
+});
