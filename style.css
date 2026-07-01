@@ -289,7 +289,3 @@ body.login-body{
 .overlay.active{
     display:block;
 }
-button{
-    position: relative !important;
-    z-index: 10000 !important;
-}
