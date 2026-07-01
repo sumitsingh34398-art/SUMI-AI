@@ -84,7 +84,7 @@ async function sendMessage() {
     }
     document.querySelector("button").disabled = false;
 
-    chatBox.scrollTop = chatBox.scrollHeight;
+    // chatBox.scrollTop = chatBox.scrollHeight;
 }
 function newChat() {
     let chatBox = document.getElementById("chat-box");
