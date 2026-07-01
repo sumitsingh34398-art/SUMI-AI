@@ -271,7 +271,7 @@ body.login-body{
     pointer-events:auto;
   }
   /* Overlay */
-#overlay{
+.overlay{
     position: fixed;
     top: 0;
     left: 0;
@@ -303,6 +303,6 @@ body.login-body{
 }
 
 /* Overlay active */
-#overlay.active{
+.overlay.active{
     display:block;
 }
