@@ -58,7 +58,7 @@ text-shadow: 0 0 10px rgba(255,255,255,0.4);
     padding:15px;
     border-radius:20px;
     overflow-y:auto;
-    border: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
 position: relative;
 z-index: 1;
@@ -107,11 +107,12 @@ padding-left: 15px;
 }
 
 .input-area button{
-  width:44px;
-  height:44px;
+  width:48px;
+  height:48px;
   border:none;
-  border-radius:14px;
+  border-radius:16px;
   cursor:pointer;
+  margin-left:4px;
   font-size:18px;
   background: linear-gradient(135deg,#06b6d4,#2563eb);
   color:white;
@@ -305,6 +306,8 @@ body.login-body{
     background: rgba(255,255,255,0.05);
     border-radius:12px;
     transition:0.3s;
+    margin-left: 4px;
+    padding: 8px;
   }
   #attach-btn:hover{
     background: rgba(255,255,255,0.1);
@@ -313,14 +316,14 @@ body.login-body{
  .input-area{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:12px;
     padding:12px;
-    margin:10px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(12px);
+    margin:15px;
+    background: rgba(20,30,40,0.85);
+    backdrop-filter: blur(16px);
     border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border-radius:22px;
+    box-shadow: 0 0 25px rgba(0,180,0,15);
   }
  .user-message{
     background:#06b6d4;
